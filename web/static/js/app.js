@@ -12,10 +12,27 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
-
+import $ from "jquery"
+import jQuery from "jquery"
+import "Flot"
 // Import local files
 //
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
 
-// import socket from "./socket"
+import flot from "./flot"
+import socket from "./socket"
+
+
+// Now that you are connected, you can join channels with a topic:
+let channel = socket.channel("events:volume", {})
+channel.join()
+  .receive("ok", resp => {
+    console.log("Joined Channel!")
+  })
+  .receive("error", resp => { console.log("Unable to join", resp) })
+
+
+channel.on("new_value", payload => {
+  flot.addDataPoint(payload.value)
+})
