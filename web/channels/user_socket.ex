@@ -2,7 +2,7 @@ defmodule Noise.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "rooms:*", Noise.RoomChannel
+  channel "events:*", Noise.EventChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

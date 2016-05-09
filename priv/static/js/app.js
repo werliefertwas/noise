@@ -14204,6 +14204,10 @@ require("Flot");
 
 require("./flot");
 
+var _socket = require("./socket");
+
+var _socket2 = _interopRequireDefault(_socket);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 });
 
@@ -14285,12 +14289,14 @@ var socket = new _phoenix.Socket("/socket", { params: { token: window.userToken 
 socket.connect();
 
 // Now that you are connected, you can join channels with a topic:
-var channel = socket.channel("topic:subtopic", {});
+var channel = socket.channel("events:volume", {});
 channel.join().receive("ok", function (resp) {
   console.log("Joined successfully", resp);
 }).receive("error", function (resp) {
   console.log("Unable to join", resp);
 });
+
+channel.on("new_value", function (payload) {});
 
 exports.default = socket;
 });
