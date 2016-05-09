@@ -18,3 +18,8 @@ npm install && node node_modules/brunch/bin/brunch build
 ```
 mix phoenix.server
 ```
+
+# migration
+```
+mix ecto.migrate
+```
