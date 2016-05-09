@@ -23,3 +23,8 @@ mix phoenix.server
 ```
 mix ecto.migrate
 ```
+
+# seeds
+```
+mix run priv/repo/seeds.exs
+```

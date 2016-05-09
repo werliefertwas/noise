@@ -9,3 +9,12 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+maximum_value = 20
+
+Noise.Repo.delete_all Noise.Event
+
+for i <- 1..100 do
+  value = maximum_value * :random.uniform
+  Noise.Repo.insert %Noise.Event{label: "Volume", value: value, timestamp: Ecto.DateTime.utc}
+end
