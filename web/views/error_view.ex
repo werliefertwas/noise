@@ -1,6 +1,10 @@
 defmodule Noise.ErrorView do
   use Noise.Web, :view
 
+  def render("404.json", _assigns) do
+		%{status: 404, message: "not found"}
+  end
+
   def render("404.html", _assigns) do
     "Page not found"
   end

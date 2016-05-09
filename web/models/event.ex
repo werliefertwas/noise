@@ -7,7 +7,7 @@ defmodule Noise.Event do
     field :timestamp, Ecto.DateTime
   end
 
-  @required_fields ~w(label value timestamp)
+  @required_fields ~w(label value)
   @optional_fields ~w()
 
   @doc """

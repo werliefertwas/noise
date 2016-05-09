@@ -19,8 +19,9 @@ defmodule Noise.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Noise do
-  #   pipe_through :api
-  # end
+  scope "/api", Noise do
+    pipe_through :api
+
+		resources "/events", Api.EventController, only: [:create, :show]
+  end
 end
