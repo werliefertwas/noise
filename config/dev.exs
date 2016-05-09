@@ -36,7 +36,6 @@ config :phoenix, :stacktrace_depth, 20
 config :noise, Noise.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
   database: "noise_dev",
   hostname: "localhost",
   pool_size: 10
