@@ -6,8 +6,6 @@ defmodule Noise.Repo.Migrations.CreateEvent do
       add :label, :string
       add :value, :float
       add :timestamp, :datetime
-
-      timestamps
     end
 
   end
