@@ -2,10 +2,6 @@ let plot = $.plot("#placeholder", [], {
   series: {
     shadowSize: 0	// Drawing is faster without shadows
   },
-  yaxis: {
-    transform: function(v) { return Math.log(v); },
-    inverseTransform: function (v) { return Math.exp(v); }
-  },
   xaxis: {
     show: false
   }
