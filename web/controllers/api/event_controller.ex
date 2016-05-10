@@ -1,3 +1,5 @@
+require IEx
+
 defmodule Noise.Api.EventController do
   use Noise.Web, :controller
 
@@ -10,6 +12,7 @@ defmodule Noise.Api.EventController do
 
     case Repo.insert(changeset) do
       {:ok, event} ->
+        Noise.Endpoint.broadcast! "events", "new_value", %{label: event.label, value: event.value}
         conn
         |> put_status(:created)
         |> put_resp_header("location", event_path(conn, :show, event))
