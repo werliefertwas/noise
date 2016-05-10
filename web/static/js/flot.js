@@ -3,8 +3,8 @@ let plot = $.plot("#placeholder", [], {
     shadowSize: 0	// Drawing is faster without shadows
   },
   yaxis: {
-    min: 0,
-    max: 1
+    transform: function(v) { return Math.log(v); },
+    inverseTransform: function (v) { return Math.exp(v); }
   },
   xaxis: {
     show: false
@@ -39,12 +39,10 @@ plot.addDataPoint = function(point, label) {
     }
   }
 
-  var labels = Object.keys(this.data);
   var data = [];
-  var self = this;
-  labels.forEach(function(elem) {
-    data.push(self.data[elem])
-  });
+  for(var key in this.data){
+    data.push(this.data[key])
+  }
 
   this.setData(data)
   this.setupGrid()
