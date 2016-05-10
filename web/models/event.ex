@@ -4,11 +4,12 @@ defmodule Noise.Event do
   schema "events" do
     field :label, :string
     field :value, :float
-    field :timestamp, Ecto.DateTime
+
+    timestamps [inserted_at: :timestamp, updated_at: false]
   end
 
   @required_fields ~w(label value)
-  @optional_fields ~w()
+  @optional_fields ~w(timestamp)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -17,7 +18,7 @@ defmodule Noise.Event do
   with no validation performed.
   """
   def changeset(model, params \\ :empty) do
-    model
+		model
     |> cast(params, @required_fields, @optional_fields)
   end
 end

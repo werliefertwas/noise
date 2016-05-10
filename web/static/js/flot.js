@@ -35,12 +35,10 @@ plot.addDataPoint = function(point, label) {
     }
   }
 
-  var labels = Object.keys(this.data);
   var data = [];
-  var self = this;
-  labels.forEach(function(elem) {
-    data.push(self.data[elem])
-  });
+  for(var key in this.data){
+    data.push(this.data[key])
+  }
 
   this.setData(data)
   this.setupGrid()
