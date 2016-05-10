@@ -34,5 +34,5 @@ channel.join()
 
 
 channel.on("new_value", payload => {
-  flot.addDataPoint(payload.value)
+  flot.addDataPoint(payload.value, payload.label)
 })
