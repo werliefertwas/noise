@@ -3,8 +3,8 @@ let plot = $.plot("#placeholder", [], {
     shadowSize: 0	// Drawing is faster without shadows
   },
   yaxis: {
-    min: 0,
-    max: 1
+    transform: function(v) { return Math.log(v); },
+    inverseTransform: function (v) { return Math.exp(v); }
   },
   xaxis: {
     show: false
