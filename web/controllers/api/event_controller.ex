@@ -1,5 +1,3 @@
-require IEx
-
 defmodule Noise.Api.EventController do
   use Noise.Web, :controller
 
