@@ -1,33 +1,33 @@
 # noise
 
-# setup
+## demo
+https://secure-spire-62884.herokuapp.com/
 
-DB:
+## setup
+
+### DB:
 ```
 createuser --superuser postgres
 mix ecto.create
 ```
-# init app
 
+### init app
 ```
 mix deps.get
 npm install && node node_modules/brunch/bin/brunch build
 ```
 
-# start server
-```
-mix phoenix.server
-```
-
-# migration
+### migration
 ```
 mix ecto.migrate
 ```
 
-# seeds
+### seeds
 ```
 mix run priv/repo/seeds.exs
 ```
 
-# demo
-https://secure-spire-62884.herokuapp.com/
+## start server
+```
+mix phoenix.server
+```
