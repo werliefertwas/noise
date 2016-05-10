@@ -28,3 +28,6 @@ mix ecto.migrate
 ```
 mix run priv/repo/seeds.exs
 ```
+
+# demo
+https://secure-spire-62884.herokuapp.com/
