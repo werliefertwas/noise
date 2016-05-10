@@ -11,19 +11,42 @@ let plot = $.plot("#placeholder", [], {
   }
 })
 
-plot.addDataPoint = function(point) {
+plot.addDataPoint = function(point, label) {
+  if(this.count == undefined) {
+      this.count = {}
+  }
+
   if (this.data == undefined) {
-    this.data = []
-    this.count = 0
+    this.data = {}
   }
 
-  this.data.push([this.count++, point])
-
-  if(this.data.length > 21) {
-    this.data.shift(1)
+  if(this.data[label] == undefined){
+    this.data[label] = {
+      "label": label,
+      "data": []
+    }
   }
 
-  this.setData([this.data])
+  if(this.count[label] == undefined){
+    this.count[label] = 0
+  }
+
+  this.data[label].data.push([this.count[label]++, point])
+
+  if(this.data[label].data.length > 21) {
+    for(var key in this.data){
+      this.data[key].data.shift(1)
+    }
+  }
+
+  var labels = Object.keys(this.data);
+  var data = [];
+  var self = this;
+  labels.forEach(function(elem) {
+    data.push(self.data[elem])
+  });
+
+  this.setData(data)
   this.setupGrid()
   this.draw()
 }
